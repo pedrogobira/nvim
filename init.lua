@@ -83,6 +83,9 @@ vim.o.completeopt = vim.o.completeopt .. ",menuone,noselect,popup"
 -- Default border style of floating windows
 vim.o.winborder = 'rounded'
 
+-- Disable swapfile
+vim.opt.swapfile = false
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -225,6 +228,8 @@ vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
 vim.pack.add({'https://github.com/lewis6991/gitsigns.nvim'})
 require('gitsigns').setup({
+  signs_staged_enable = true,
+  numhl = true,
   current_line_blame = true,
   on_attach = function(bufnr)
     local gitsigns = require('gitsigns')
@@ -264,6 +269,18 @@ vim.keymap.set('n', '<leader>td', vim.cmd.TodoTelescope)
 
 vim.pack.add({'https://github.com/numToStr/Comment.nvim'})
 require('Comment').setup()
+
+vim.pack.add({
+  {src='https://github.com/ThePrimeagen/harpoon',version='harpoon2'}
+})
+local harpoon = require('harpoon')
+harpoon:setup({})
+vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end)
+vim.keymap.set("n", "<leader>he", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+vim.keymap.set("n", "<leader>hh", function() harpoon:list():select(1) end)
+vim.keymap.set("n", "<leader>hj", function() harpoon:list():select(2) end)
+vim.keymap.set("n", "<leader>hk", function() harpoon:list():select(3) end)
+vim.keymap.set("n", "<leader>hl", function() harpoon:list():select(4) end)
 
 -- The line beneath this is called `modeline`.
 -- See `:help modeline`
