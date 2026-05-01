@@ -301,20 +301,6 @@ require("themery").setup({
   }},
 })
 
-vim.pack.add({'https://github.com/folke/snacks.nvim'})
-local Snacks = require('snacks')
-Snacks.setup({
-  bigfile = { enabled = true },
-  dim = { enabled = false },
-  scope = { enabled = true },
-  scratch = { enabled = true },
-  scroll = { enabled = true },
-})
-
--- Snacks scratch keymaps
-vim.keymap.set('n', '<leader>.', function() Snacks.scratch() end, { desc = 'Toggle Scratch Buffer' })
-vim.keymap.set('n', '<leader>ss', function() Snacks.scratch.select() end, { desc = 'Select Scratch Buffer' })
-
 -- The line beneath this is called `modeline`.
 -- See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
