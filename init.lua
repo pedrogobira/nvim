@@ -285,6 +285,22 @@ vim.keymap.set("n", "<leader>hl", function() harpoon:list():select(4) end)
 vim.pack.add({'https://github.com/j-hui/fidget.nvim'})
 require('fidget').setup()
 
+vim.pack.add({'https://github.com/EdenEast/nightfox.nvim'})
+
+vim.pack.add({'https://github.com/zaldih/themery.nvim'})
+require("themery").setup({
+  -- themes = {"gruvbox", "ayu", ...}, -- Your list of installed colorschemes.
+  livePreview = true, -- Apply theme while picking. Default to true.
+  themes = {{
+    name = "Day",
+    colorscheme = "dayfox",
+  },
+  {
+    name = "Night",
+    colorscheme = "carbonfox",
+  }},
+})
+
 -- The line beneath this is called `modeline`.
 -- See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
